@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title></title>
+
+<script src="Posterdown_files/kePrint-0.0.1/kePrint.js"></script>
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=Special Elite' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 841mm 1189mm;
+margin: 0;
+padding: 0;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 841mm;
+height: 1189mm;
+text-align: justify;
+font-size: 45px;
+line-height: 1.05;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r {
+background-color: #dddddd40;
+border-radius: 4mm;
+padding: 4mm;
+width: 75%;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+code.sourceCode.r{
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #00808024;
+color: #0b4545;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 20pt;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #00808020;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 20pt;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 13.7px;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 841mm;
+height: calc(1189mm *  (1 - 9.0e-2 - 8.4e-2 - 0.01) );
+-webkit-column-count: 3; /* Chrome, Safari, Opera */
+-moz-column-count: 3; /* Firefox */
+column-count: 3;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+column-gap: 0;
+padding-left: 0cm;
+padding-right: 0cm;
+/* -webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%; */
+-webkit-column-rule-style: none;
+-moz-column-rule-style: none;
+column-rule-style: none;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+background-color: #ffffff;
+font-family: Rasa;
+margin-top: calc(1189mm *  9.0e-2 );
+padding-top: 1em;
+padding-bottom: 1em;
+}
+span.citation {
+  color: #008080;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #008080;
+}
+#title {
+font-size: 125pt;
+text-align: left;
+margin: 0;
+line-height: 98%;
+border-bottom: 0;
+font-weight: normal;
+background: 0;
+}
+#author {
+color: #0b4545;
+margin: 0;
+line-height: 85%;
+font-size: 1.17em;
+}
+#affiliation {
+padding-top: 0.1em;
+color: ;
+font-style: italic;
+font-size: 20px;
+margin: 0;
+}
+sup {
+color: #cc0000;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author {
+text-align: left;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: #008080;
+margin: 0;
+line-height: 85%;
+font-size: 30px;
+text-align: left;
+}
+.outer h1, h2, h3, h4, h5, h6 {
+text-align: center;
+margin: 0;
+font-weight: bold;
+}
+.section h1 {
+  text-align:center;
+  padding-bottom:5px;
+  background:
+    linear-gradient(
+      to left,
+      #ffffff 1%,
+      #ffffff 20%,
+      #0b454575 33%,
+      #0b4545 50%,
+      #0b454575 66%,
+      #ffffff 80%,
+      #ffffff 99%
+    )
+    left
+    bottom
+    #ffffff
+    no-repeat;
+  background-size:100% 5px ;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p, .level2 {
+color: #000000;
+}
+.outer ol {
+padding-left: 8%;
+padding-right: 8%;
+text-align: left;
+}
+.main {
+width: 841mm;
+height: calc(1189mm * 9.0e-2);
+position: absolute;
+background-color: #0b4545;
+color: #ffffff90;
+font-family: Special Elite;
+background-image: linear-gradient(#0b4545 50%,#008080);
+}
+.main strong {
+color: #ffffff;
+}
+.main strong > sup {
+color: #ffffff;
+}
+.main sup {
+color: #ffffff90;
+}
+#main-img-left {
+width: 10%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+#main-img-center {
+width: 10%;
+left: calc(841mm * 0.45);
+bottom: 0.5in;
+position: absolute;
+}
+#main-img-right {
+width: 10%;
+right: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+.main p {
+font-size: 150px;
+font-family: Special Elite;
+text-align: center;
+margin: 0;
+position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+margin-left: 1em;
+}
+.fab {
+color: #00000030;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000030;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000030;
+font-size: 35px;
+}
+.envelope {
+color: #00000030;
+font-size: 5px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 841mm;
+height: 1189mm;
+padding: 0cm;
+}
+.main_bottom {
+width: 841mm;
+height: calc(1189mm * 8.4e-2);
+margin-top: calc(1189mm * (1 - 8.4e-2));
+position: absolute;
+background-color: #0b4545;
+background-image: linear-gradient(#008080 10%, #0b4545);
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.orcid img {
+  width: 3%;
+}
+.emphasis {
+  background-color: #008080;
+  color: #ffffff;
+  border: solid #0b2045 3mm;
+  margin: 1em;
+  padding-left: 0;
+  padding-right: 0;
+}
+.emphasis h1 {
+  font-weight: bold;
+  background: none;
+  background-color: #0b2045;
+  padding-bottom: 5mm;
+  padding-top: 1mm;
+  margin-top: -1mm;
+  margin-right: -1mm;
+  margin-left: -1mm;
+}
+.emphasis blockquote {
+  border: 0;
+}
+.emphasis ol {
+  padding: 0;
+  padding-left: 8%;
+  font-size: 100%;
+  font-weight: bold;
+}
+.emphasis p {
+  color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+
+<div class="column outer">
+<div class="section">
+
+<h3 id="author" class="author">
+
+<strong>Gihawi, A.</strong><sup> 1, <a class="orcid" href="https://orcid.org/0000-0002-3676-5561"><img src="https://raw.githubusercontent.com/brentthorne/posterdown/master/images/orcid.jpg"></a></sup><br>
+<a class="twitter" href="https://mobile.twitter.com/AbrahamGihawi"><i class="fab fa-twitter"></i>&nbsp;&nbsp;@AbrahamGihawi</a><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:A.Gihawi@uea.ac.uk">A.Gihawi@uea.ac.uk</a> <br>
+     </h3>
+
+<h5 id="author_extra", class="author_extra">
+ Hurst, R.<sup>1</sup>
+ Leggett, R.M.<sup>2</sup>
+ Cooper, C.S.<sup>1</sup>
+ Brewer, D.S.<sup>1,2</sup>
+ Genomics England Research Consortium<sup>3</sup>
+</h5>
+
+
+<p id="affiliation" class="affiliation">
+<sup>1</sup> Bob Champion Research and Education Building, University of East Anglia, Norwich, UK<br> <sup>2</sup> Earlham Institute, Norwich, UK<br> <sup>3</sup> Genomics England, London, UK
+</p>
+</div>
+
+<div id="background" class="section level1">
+<h1>Background</h1>
+<p>The involvement of <em>H. pylori</em> with gastric carcinoma<span class="citation">[<a href="#ref-RN102">1</a>]</span> and the success of the Human papillomavirus vaccine in preventing cervical cancers<span class="citation">[<a href="#ref-RN138">2</a>]</span> are testament to the prominent role that pathogens play in cancer.</p>
+<p>In whole genome sequencing, microorganisms in close proximity to the human sample can be incidentally sequenced<span class="citation">[<a href="#ref-RN455">3</a>]</span>. Therefore, the 100,000 genome project data provides a rich resource for detecting microorganisms and linking them to disease.</p>
+<p>We benchmarked software to devise the best approach for cancer whole genome sequence metagenomics. The top performing pipelines are provided in a tool called <a href="https://github.com/UEA-Cancer-Genetics-Lab/sepath_tool_UEA">SEPATH</a> <span class="citation">[<a href="#ref-RN454">4</a>]</span> which is currently being applied to all cancer samples in the 100,000 genomes project. <a href="https://github.com/UEA-Cancer-Genetics-Lab/sepath_tool_UEA">SEPATH</a> performs the following:</p>
+<ul>
+<li>Extracts unmapped reads from BAM files</li>
+<li>Quality trimming &amp; human read removal</li>
+<li>Metagenomic classification - Kraken/mOTUs2<span class="citation">[<a href="#ref-RN72">5</a>, <a href="#ref-RN391">6</a>]</span></li>
+</ul>
+<p><code>Summary: Bacteria/viruses exist naturally in our bodies but some are linked with cancer. These are sequenced alongside human DNA. We developed an approach to retain and classify non-human sequences.</code></p>
+<div id="objectives" class="section level3">
+<h3>Objectives</h3>
+<ul>
+<li>✅ Develop pathogen detection pipeline</li>
+<li>📈 Run pipeline on cancer sequence data</li>
+<li>💹 Characterise contamination</li>
+<li>⌛ Investigate associations with disease</li>
+</ul>
+</div>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<p><a href="https://github.com/UEA-Cancer-Genetics-Lab/sepath_tool_UEA">SEPATH</a> was run on all cancer samples (v6, <em>n</em>=5,311).</p>
+<p><strong>Pathogenic Read Counts:</strong> <br> Genera present in <span class="math inline">\(\leq15\)</span> samples were removed from analysis and data filtered to only fresh-frozen PCR-free samples of the most common cancer types (<em>n</em>=4,305).</p>
+<p><strong>Principal Coordinates Analysis (PCoA):</strong><br> A minimum read threshold of 50 was applied to genera from the fresh-frozen PCR-free dataset containing all cancers (<em>n</em>=4,527). Genera and samples without reads were removed and Jaccard distances were obtained using the <a href="https://cran.r-project.org/web/packages/vegan/index.html">vegan</a> package.</p>
+<p><strong>Contaminant Importance:</strong><br> Potential contaminants were investigated on unfiltered data using <a href="https://cran.r-project.org/web/packages/Boruta/index.html">Boruta</a> feature selection<span class="citation">[<a href="#ref-BORUTA">7</a>]</span> to predict technical variables: <em>preparation method, library type, tissue source, handling trust, DNA amount, genome build, coverage homogeneity, fragment size, AT drop, GC drop, chimeric percentage, QC status, sample concentration</em>.</p>
+<p><code>Summary: For 5,311 cancer samples, we used mathematical approaches to determine whether each microorganism occurred in the patient or was introduced during processing.</code></p>
+<p><br></p>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<div id="classified-pathogen-reads-per-sample" class="section level3">
+<h3>Classified Pathogen Reads Per Sample</h3>
+<p>Colorectal and oral cancers demonstrate higher numbers of classified sequencing reads compared to other tumours. Background numbers of reads are present accross all tumour types (Figure <a href="#fig:readfigure">1</a>). 786/1,534 Genera remained after filtering.</p>
+<div class="figure" style="text-align: center"><span id="fig:readfigure"></span>
+<img src="plots/read_plot.png" alt="Number of reads classified at genus level per tumour sample (_n_=4,305)" width="108%" />
+<p class="caption">
+Figure 1: Number of reads classified at genus level per tumour sample (<em>n</em>=4,305)
+</p>
+</div>
+<p><br></p>
+</div>
+<div id="sample-similarity" class="section level3">
+<h3>Sample Similarity</h3>
+<p><strong>What we expect:</strong><br> We expect body site to separate each sample as demonstrated in the human microbiome project<span class="citation">[<a href="#ref-RN457">8</a>]</span> (Figure <a href="#fig:hmpfigure">2</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:hmpfigure"></span>
+<img src="plots/hmp_fig2.png" alt="Principal coordinates analysis from the human microbiome project. Point colour denotes sampling site. (bray curtis distance, 16s ribosomal RNA gene classification, genus level). Adapted from the human microbiome project consortium, 2012 [@RN457]." width="80%" />
+<p class="caption">
+Figure 2: Principal coordinates analysis from the human microbiome project. Point colour denotes sampling site. (bray curtis distance, 16s ribosomal RNA gene classification, genus level). Adapted from the human microbiome project consortium, 2012 <span class="citation">[<a href="#ref-RN457">8</a>]</span>.
+</p>
+</div>
+<p><br> <br> <strong>What we found:</strong><br> Examining relationships between cancer samples in the 100,000 genomes project shows that apart from colorectal, samples appear highly mixed suggesting background contamination (Figure <a href="#fig:pcoafigure">3</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:pcoafigure"></span>
+<img src="plots/pcoa_plot.png" alt="Principal coordinates analysis showing sample similarity (Jaccard distance)." width="108%" />
+<p class="caption">
+Figure 3: Principal coordinates analysis showing sample similarity (Jaccard distance).
+</p>
+</div>
+<p><br></p>
+</div>
+<div id="top-potential-contaminants" class="section level3">
+<h3>Top Potential Contaminants</h3>
+<p>429 Genera demonstrated utility in predicting technical variables. The top 15 are compared to a recent meta-analysis contaminants below<span class="citation">[<a href="#ref-RN456">9</a>]</span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Genus
+</th>
+<th style="text-align:center;">
+Importance <br> Ranking
+</th>
+<th style="text-align:center;">
+Contaminant in Literature
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Enterococcus
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+✅
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Curvibacter
+</td>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+✅
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Methylobacterium
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+✅
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Sphingomonas
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+✅
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Variovorax
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Actinomyces
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+✅
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Bradyrhizobium
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+✅
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Burkholderia
+</td>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+✅
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Cutibacterium
+</td>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Hammondia
+</td>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Kocuria
+</td>
+<td style="text-align:center;">
+11
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Micrococcus
+</td>
+<td style="text-align:center;">
+12
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Ralstonia
+</td>
+<td style="text-align:center;">
+13
+</td>
+<td style="text-align:center;">
+✅
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Sphingobium
+</td>
+<td style="text-align:center;">
+14
+</td>
+<td style="text-align:center;">
+✅
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-style: italic;">
+Streptococcus
+</td>
+<td style="text-align:center;">
+15
+</td>
+<td style="text-align:center;">
+✅
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="conclusions" class="section level1">
+<h1>Conclusions</h1>
+<ul>
+<li>1,534 unique genera reported so far</li>
+<li>Contamination can occur at any point from sample collection to analysis</li>
+<li>Efforts are being made in differentiating real results from contaminants to denoise sparse metagenomic data and enable interpretation of the results</li>
+</ul>
+<p><code>Summary: Finding pathogens in cancer sequences is like finding a needle in a haystack. We need develop an approach to make it easier by removing the hay.</code></p>
+</div>
+<div id="future-tasks" class="section level1">
+<h1>Future Tasks</h1>
+<ul>
+<li>Introduce covariates (age, gender, ethnicity) in the method to detect contaminants</li>
+<li>Determine threshold of contanimant removal that produces the greatest cancer type separation</li>
+<li>Produce a final list of high confidence findings to share with other GECIPs</li>
+</ul>
+<div id="acknowledgements" class="section level2">
+<h2>Acknowledgements</h2>
+<p>Thanks to participants, staff and to <a href="http://www.big-c.co.uk/">Big C</a> for making this research possible. This research was made possible through access to the data and findings generated by the 100,000 Genomes Project; <a href="http://www.genomicsengland.co.uk" class="uri">http://www.genomicsengland.co.uk</a></p>
+<p><img src="resources/logos.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><em>Note: </em> This poster was produced in R. Details and code to reproduce this poster can be found: <a href="https://github.com/Agihawi/Gel_Conference_Poster_1" class="uri">https://github.com/Agihawi/Gel_Conference_Poster_1</a></p>
+<div id="references" class="section level3 unnumbered">
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-RN102">
+<p>1. Plummer M, Martel C de, Vignat J, Ferlay J, Bray F, Franceschi S. Global burden of cancers attributable to infections in 2012: A synthetic analysis. The Lancet Global Health. 2016;4:e609–16.</p>
+</div>
+<div id="ref-RN138">
+<p>2. Hibbitts S, Tristram A, Beer H, McRea J, Rose B, Hauke A, et al. UK population based study to predict impact of hpv vaccination. J Clin Virol. 2014;59:109–14. doi:<a href="https://doi.org/10.1016/j.jcv.2013.12.002">10.1016/j.jcv.2013.12.002</a>.</p>
+</div>
+<div id="ref-RN455">
+<p>3. Magiorkinis G, Matthews PC, Wallace SE, Jeffery K, Dunbar K, Tedder R, et al. Potential for diagnosis of infectious disease from the 100,000 genomes project metagenomic dataset: Recommendations for reporting results. Wellcome Open Research. 2019;4.</p>
+</div>
+<div id="ref-RN454">
+<p>4. Gihawi A, Rallapalli G, Hurst R, Cooper CS, Leggett RM, Brewer DS. SEPATH: Benchmarking the search for pathogens in human tissue whole genome sequence data leads to template pipelines. Genome Biol. 2019;20:208. doi:<a href="https://doi.org/10.1186/s13059-019-1819-8">10.1186/s13059-019-1819-8</a>.</p>
+</div>
+<div id="ref-RN72">
+<p>5. Wood D, Salzberg S. Kraken - ultrafast metagenomic sequence classification using exact alignments. Genome Biol. 2014;15.</p>
+</div>
+<div id="ref-RN391">
+<p>6. Milanese A, Mende DR, Paoli L, Salazar G, Ruscheweyh HJ, Cuenca M, et al. Microbial abundance, activity and population genomic profiling with mOTUs2. Nat Commun. 2019;10:1014. doi:<a href="https://doi.org/10.1038/s41467-019-08844-4">10.1038/s41467-019-08844-4</a>.</p>
+</div>
+<div id="ref-BORUTA">
+<p>7. Kursa MB, Rudnicki WR. Feature selection with the Boruta package. Journal of Statistical Software. 2010;36:1–13. <a href="http://www.jstatsoft.org/v36/i11/" class="uri">http://www.jstatsoft.org/v36/i11/</a>.</p>
+</div>
+<div id="ref-RN457">
+<p>8. Human Microbiome Project C. Structure, function and diversity of the healthy human microbiome. Nature. 2012;486:207–14. doi:<a href="https://doi.org/10.1038/nature11234">10.1038/nature11234</a>.</p>
+</div>
+<div id="ref-RN456">
+<p>9. Eisenhofer R, Minich JJ, Marotz C, Cooper A, Knight R, Weyrich LS. Contamination in low microbial biomass microbiome studies: Issues and recommendations. Trends Microbiol. 2019;27:105–17. doi:<a href="https://doi.org/10.1016/j.tim.2018.11.003">10.1016/j.tim.2018.11.003</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="main">
+<p><strong>The Search for Pathogens in 100,000 Genomes Project Data</strong></p>
+</div>
+<div class="main_bottom">
+<img id="main-img-left" src=resources/sepath_qr.png>
+<img id="main-img-center" src=>
+<img id="main-img-right" src=resources/poster_qr.png>
+</div>
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+var script = document.createElement("script");
+script.type = "text/javascript";
+var src = "";
+if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+if (location.protocol !== "file:" && /^https?:/.test(src))
+src = src.replace(/^https?:/, '');
+script.src = src;
+document.getElementsByTagName("head")[0].appendChild(script);
+})();
+</script>
+
+
+</body>
+</html>
