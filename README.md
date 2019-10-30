@@ -4,8 +4,7 @@ This repository will recreate the poster used at the first GECIP conference and 
 
 # Poster Production
 
-The poster was created using the [posterdown](https://cran.r-project.org/web/packages/posterdown/index.html) package. To run, render the `Posterdown.Rmd` file. The output will be in html format. A PDF version is also provided in this repo. The libraries should automatically load or prompt for installation if they are not already installed.
-
+The poster was created using the [posterdown](https://cran.r-project.org/web/packages/posterdown/index.html) package. To run, render the `Posterdown.Rmd` file. The output will be in html format. A PDF version is also provided in this repo. If you don't have the required libraries please run `Rscript install.R` from the repository directory.
 
 # SEPATH Pipeline Parameters:
 
